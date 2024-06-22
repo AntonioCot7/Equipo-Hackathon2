@@ -20,16 +20,20 @@ export const login = async (email, password) => {
   return response.data;
 };
 
-export const register = async (name, email, password) => {
-  const response = await api.post('/auth/register', { name, email, password });
+export const register = async (name, email, password, role) => {
+  const response = await api.post('/auth/register', { name, email, password, role });
   return response.data;
 };
 
-// Role management
 export const getUserRole = async (token) => {
   setAuthToken(token);
-  const response = await api.get('/auth/role');
-  return response.data;
+  try {
+    const response = await api.get('/auth/role');
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch user role:', error);
+    throw error;
+  }
 };
 
 // Items

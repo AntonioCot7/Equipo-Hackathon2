@@ -23,14 +23,14 @@ const Login = () => {
         window.location.href = '/client-dashboard';
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login failed:', error.response || error.message || error);
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+        <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-6">Login</h2>
         <LoginForm onLogin={handleLogin} />
       </div>
     </div>
