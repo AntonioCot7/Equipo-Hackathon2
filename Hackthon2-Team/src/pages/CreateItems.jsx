@@ -31,7 +31,7 @@ export const CreateItems = () => {
                 },
             });
             alert('Item creado con éxito');
-            navigate('/admin'); // Redirige a la vista de admin después de crear el item
+            navigate('/Items'); // Redirige a la vista de admin después de crear el item
         } catch (error) {
             console.error('Error al crear el item:', error);
             alert('Hubo un error al crear el item');

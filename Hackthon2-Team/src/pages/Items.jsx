@@ -22,7 +22,7 @@ export const Items = () => {
         checkUserStatus();
     }, []);
 
-    const fetchItems = async (limit = 10, lastKey = null) => {
+    const fetchItems = async (limit = 5, lastKey = null) => {
         setLoading(true);
         try {
             const response = await axios.get('https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/items', {

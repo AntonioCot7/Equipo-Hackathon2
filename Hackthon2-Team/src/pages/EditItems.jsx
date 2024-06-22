@@ -41,21 +41,22 @@ export const EditItems = () => {
         fetchItem();
     }, [id]);
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         const token = localStorage.getItem('token');
 
         const updatedItem = {
             itemId: id,
-            boughtInLastMonth,
-            imgUrl,
-            isBestSeller,
-            price,
-            stars,
             title,
+            price: parseFloat(price),
+            stars: parseInt(stars),
+            imgUrl,
+            boughtInLastMonth: parseInt(boughtInLastMonth),
+            isBestSeller,   
         };
 
         try {
-            const response = await axios.put('https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/items', updatedItem, {
+            const response = await axios.put('https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/item', updatedItem, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
