@@ -7,6 +7,8 @@ import {
 import { Items } from './pages/Items';
 import { CreateItems } from './pages/CreateItems';
 import { EditItems } from './pages/EditItems';
+import { ItemDetails } from './pages/ItemDetails';
+import { DeleteItem } from './pages/DeleteItem';
 
 function App() {
   
@@ -17,6 +19,8 @@ function App() {
           <Route path="/Items" element={<Items />} />
           <Route path="/EditItems" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
+          <Route path="/ItemDetails" element={<ItemDetails/>} />
+          <Route path="/DeleteItem" element={<DeleteItem/>} />
         </Routes>
       </Router>
     </>
