@@ -1,8 +1,8 @@
 import { 
-	BrowserRouter as Router, 
-	Routes, 
-	Route,
-	Navigate } from 'react-router-dom';
+  BrowserRouter as Router, 
+  Routes, 
+  Route,
+  Navigate } from 'react-router-dom';
 
 import { Items } from './pages/Items';
 import { CreateItems } from './pages/CreateItems';
@@ -21,7 +21,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/Items" element={<Items />} />
+          <Route path="*" element={<Navigate to="/items" replace />} />
           <Route path="/EditItems" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
           <Route path="/ItemDetails" element={<ItemDetails/>} />
@@ -33,7 +33,7 @@ function App() {
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
 export default App;
