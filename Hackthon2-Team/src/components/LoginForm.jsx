@@ -1,25 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-import { Button } from '../components/Button'
-import { LoginForm } from '../components/LoginForm'
-import img4 from '../assets/Img4.jpg'
+const LoginForm = ({ onLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-export const Login = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLogin(email, password);
+  };
+
   return (
-    <main>
-      <section className="navigation-buttons">
-        <Button message="Iniciar Sesión" to="/auth/login"/>
-        <Button message="Registrarse" to="/auth/register"/>
-      </section>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label className="block text-gray-700 mb-2" htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+      <div className="mb-6">
+        <label className="block text-gray-700 mb-2" htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+      >
+        Login
+      </button>
+    </form>
+  );
+};
 
-      <article className="main-content">
-        <LoginForm />
-        <section className="content">
-          <h2 className="title">Bienvenido de vuelta</h2>
-          <p className="subtitle">Inicia sesión para empezar a usar Uber</p>
-          <img src={img4} alt="uber" />
-        </section>
-      </article>
-    </main>
-  )
-}
+export default LoginForm;

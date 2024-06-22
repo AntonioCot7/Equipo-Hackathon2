@@ -4,17 +4,8 @@ import {
 	Routes, 
 	Route,
 	Navigate } from 'react-router-dom'
-import { Navbar } from './layout/Navbar'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
-import { Dashboard } from './pages/Dashboard'
-import { CreateItems } from './pages/CreateItems'
-import { EditItems } from './pages/EditItems'
-import ItemDetails from './components/ItemDetails';
-import { Card } from './pages/Cart'
-import { Buy } from './pages/Buy.jsx'
-import { NotFound } from './pages/NotFound'
-
 function App() {
   
   return (
@@ -25,13 +16,6 @@ function App() {
           <Route path="/" element={<Navigate to="/auth/login"/>} />
           <Route path="/auth/login" element={<Login/>} />
           <Route path="/auth/register" element={<Register/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
-          <Route path="/EditItems" element={<EditItems/>} />
-          <Route path="/CreateItems" element={<CreateItems/>} />
-          <PrivateRoute path="/item/:id" element={<ItemDetails />} />
-          <Route path="/Cart" element={<Cart/>} />
-          <Route path="/Buy" element={<Buy/>} />
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>

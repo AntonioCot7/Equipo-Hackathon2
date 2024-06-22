@@ -1,40 +1,40 @@
-import React, { useState } from 'react';
-import { Button } from '../components/Button';
-import { RegisterForm } from '../components/RegisterForm';
-import { RegisterVehicle } from '../components/RegisterVehicle';
-import img6 from '../assets/Img6.png';
+import React from 'react';
+import RegisterForm from '../components/RegisterForm';
+import { register, getUserRole } from '../services/api';
 
-export const Register = () => {
-    const [vehicleRegister, setVehicleRegister] = useState(false);
-    const [formData, setFormData] = useState(null);
+const Register = () => {
+  const handleRegister = async (name, email, password) => {
+    try {
+      const response = await register(name, email, password);
+      const token = response.token;
+      localStorage.setItem('token', token);
 
-    const handleRegister = (data) => {
-        if (data.isDriver === 'true') {
-            setFormData(data);
-            setVehicleRegister(true);
-        }
-    };
+      const roleResponse = await getUserRole(token);
+      const role = roleResponse.role;
+      localStorage.setItem('role', role);
+
+      console.log('Registration successful:', response);
+      console.log('User role:', role);
+
+      // Redirigir según el rol
+      if (role === 'admin') {
+        window.location.href = '/admin-dashboard';
+      } else {
+        window.location.href = '/client-dashboard';
+      }
+    } catch (error) {
+      console.error('Registration failed:', error);
+    }
+  };
 
   return (
-    <main>
-      <section className="navigation-buttons">
-        <Button message="Iniciar Sesión" to="/auth/login"/>
-        <Button message="Registrarse" to="/auth/register"/>
-      </section>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+        <RegisterForm onRegister={handleRegister} />
+      </div>
+    </div>
+  );
+};
 
-      <article className="main-content">
-        <section className="content">
-          <h1 className="title">¡Bienvenido!</h1>
-          <p className="subtitle">Regístrate como pasajero o conductor para empezar con Uber</p>
-          <img className='w-4/5 mx-auto' src={img6} alt="uber" />
-
-        </section>
-          {vehicleRegister ?
-              <RegisterVehicle formData={formData}/>
-              :
-              <RegisterForm onRegister={handleRegister}/>
-          }
-      </article>
-    </main>
-  )
-}
+export default Register;
