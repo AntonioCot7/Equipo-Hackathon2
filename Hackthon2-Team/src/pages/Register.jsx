@@ -1,3 +1,4 @@
+
 import React from 'react';
 import RegisterForm from '../components/RegisterForm';
 import { register, getUserRole } from '../services/api';
@@ -38,3 +39,4 @@ const Register = () => {
 };
 
 export default Register;
+
