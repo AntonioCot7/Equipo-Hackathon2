@@ -10,6 +10,7 @@ import { Register } from './pages/Register'
 import { Dashboard } from './pages/Dashboard'
 import { CreateItems } from './pages/CreateItems'
 import { EditItems } from './pages/EditItems'
+import ItemDetails from './components/ItemDetails';
 import { Card } from './pages/Cart'
 import { Buy } from './pages/Buy.jsx'
 import { NotFound } from './pages/NotFound'
@@ -27,6 +28,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/EditItems" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
+          <PrivateRoute path="/item/:id" element={<ItemDetails />} />
           <Route path="/Cart" element={<Cart/>} />
           <Route path="/Buy" element={<Buy/>} />
           <Route path="*" element={<NotFound />} />
