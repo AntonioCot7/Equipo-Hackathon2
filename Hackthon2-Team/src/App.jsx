@@ -21,7 +21,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="*" element={<Navigate to="/items" replace />} />
+          <Route path="/Items" element={<Items/>} />
           <Route path="/EditItems" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
           <Route path="/ItemDetails" element={<ItemDetails/>} />
