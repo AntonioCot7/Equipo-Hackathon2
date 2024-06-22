@@ -25,7 +25,7 @@ export const CreateItems = () => {
         };
 
         try {
-            const response = await axios.post('https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/items', newItem, {
+            const response = await axios.post('https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/item', newItem, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
