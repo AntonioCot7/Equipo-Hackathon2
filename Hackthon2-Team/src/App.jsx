@@ -1,8 +1,8 @@
-import { 
-  BrowserRouter as Router, 
-  Routes, 
-  Route,
-  Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import './index.css';
 
 import { Items } from './pages/Items';
 import { CreateItems } from './pages/CreateItems';
@@ -18,8 +18,8 @@ import { BuyCart } from './pages/BuyCart';
 function App() {
   
   return (
-    <>
-      <Router>
+    <Router>
+      <div className="min-h-screen bg-gray-100">
         <Routes>
           <Route path="/Items" element={<Items/>} />
           <Route path="/EditItems" element={<EditItems/>} />
@@ -29,11 +29,13 @@ function App() {
           <Route path="/AddItemCart" element={<AddItemToCart/>} />
           <Route path="/RemoveFromCart" element={<RemoveFromCart/>} />
           <Route path="/BuyCart" element={<BuyCart/>} />
-
+          <Route path="/" element={<Login />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
         </Routes>
-      </Router>
-    </>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
