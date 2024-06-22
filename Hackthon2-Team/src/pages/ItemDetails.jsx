@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ItemDetails = ({ id, currentUser }) => {
+export const ItemDetails = ({ id, currentUser }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -54,5 +54,3 @@ const ItemDetails = ({ id, currentUser }) => {
     </div>
   );
 };
-
-export default ItemDetails;

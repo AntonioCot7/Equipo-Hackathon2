@@ -1,12 +1,14 @@
 import { 
-	BrowserRouter as Router, 
-	Routes, 
-	Route,
-	Navigate } from 'react-router-dom';
+  BrowserRouter as Router, 
+  Routes, 
+  Route,
+  Navigate } from 'react-router-dom';
 
 import { Items } from './pages/Items';
 import { CreateItems } from './pages/CreateItems';
 import { EditItems } from './pages/EditItems';
+import { ItemDetails } from './pages/ItemDetails';
+import { DeleteItem } from './pages/DeleteItem';
 
 function App() {
   
@@ -14,23 +16,17 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/Items" element={<Items />} />
-          <Route path="/EditItems" element={<EditItems/>} />
-          <Route path="/CreateItems" element={<CreateItems/>} />
-          <Route path="/" element={<Navigate to="/auth/login" />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/register" element={<Register />} />
-          <PrivateRoute path="/dashboard" element={<Dashboard />} />
-          <PrivateRoute path="/editItems" element={<EditItems />} />
-          <PrivateRoute path="/createItems" element={<CreateItems />} />
-          <PrivateRoute path="/item/:id" element={<ItemDetails />} />
-          <PrivateRoute path="/cart" element={<Cart />} />
-          <PrivateRoute path="/buy" element={<Buy />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/create" element={<CreateItems />} />
+          <Route path="/edit/:id" element={<EditItems />} />
+          <Route path="/details/:id" element={<ItemDetails />} />
+          <Route path="/delete/:id" element={<DeleteItem />} />
+          {/* Redirecciona a /items si la ruta no coincide con ninguna anterior */}
+          <Route path="*" element={<Navigate to="/items" replace />} />
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
 export default App;

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 export const Items = () => {
     const [items, setItems] = useState([]);
     const [lastKey, setLastKey] = useState(null);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const fetchItems = async (limit = 10, lastKey = null) => {
         setLoading(true);
@@ -52,6 +55,18 @@ export const Items = () => {
                         <p>Precio: ${item.price}</p>
                         <p>Puntuación: {item.stars}</p>
                         <p>Compras en el último mes: {item.boughtInLastMonth}</p>
+                        <button onClick={() => navigate(`/ItemDetails/${item.asin}`)}  className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" >
+                        Ver Item
+                        </button>
+                        <button onClick={() => navigate('/CreateItems')} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                        Crear Item
+                        </button>
+                        <button onClick={() => navigate(`/EditItems/${item.asin}`)}  className="bg-green-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" >
+                        Editar Item
+                        </button>
+                        <button onClick={() => navigate(`/DeleteItem/${item.asin}`)}  className="bg-red-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" >
+                        Delete Item
+                        </button>
                     </div>
                 ))}
             </div>
