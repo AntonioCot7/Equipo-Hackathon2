@@ -12,6 +12,7 @@ import { DeleteItem } from './pages/DeleteItem';
 import { AddItemToCart } from './pages/AddItemToCart';
 import { RemoveFromCart } from './pages/RemoveFromCart';
 import { BuyCart } from './pages/BuyCart';
+import { AdminDashboard } from './pages/AdminDashboard';
 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </div>
     </Router>
