@@ -4,6 +4,7 @@ import {
 	Route,
 	Navigate } from 'react-router-dom';
 
+import { Items } from './pages/Items';
 import { CreateItems } from './pages/CreateItems';
 import { EditItems } from './pages/EditItems';
 
@@ -13,7 +14,7 @@ function App() {
     <>
       <Router>
         <Routes>
-
+          <Route path="/Items" element={<Items />} />
           <Route path="/EditItems" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
         </Routes>
