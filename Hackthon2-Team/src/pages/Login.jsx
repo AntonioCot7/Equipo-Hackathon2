@@ -3,24 +3,24 @@ import LoginForm from '../components/LoginForm';
 import { login, getUserRole } from '../services/api';
 
 const Login = () => {
-  const handleLogin = async (email, password) => {
+  const handleLogin = async (username, password) => {
     try {
-      const response = await login(email, password);
+      const response = await login(username, password);
+      /*
       const token = response.token;
       localStorage.setItem('token', token);
 
       const roleResponse = await getUserRole(token);
       const role = roleResponse.role;
       localStorage.setItem('role', role);
-
+        */
       console.log('Login successful:', response);
-      console.log('User role:', role);
-
+      console.log('User role:', response.role);
       // Redirigir según el rol
-      if (role === 'admin') {
-        window.location.href = '/admin-dashboard';
+      if (response.role === 'admin') {
+        window.location.href = '/auth/login';
       } else {
-        window.location.href = '/client-dashboard';
+        window.location.href = '/auth/login';
       }
     } catch (error) {
       console.error('Login failed:', error.response || error.message || error);

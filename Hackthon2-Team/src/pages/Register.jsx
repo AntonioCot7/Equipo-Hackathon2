@@ -1,27 +1,26 @@
-
 import React from 'react';
 import RegisterForm from '../components/RegisterForm';
 import { register, getUserRole } from '../services/api';
 
 const Register = () => {
-  const handleRegister = async (name, password, role) => {
+  const handleRegister = async (username, password, role) => {
     try {
-      const response = await register(name, password, role);
-      const token = response.token;
-      localStorage.setItem('token', token);
-
+      const response = await register(username, password, role);
+      //const token = response.token;
+      //localStorage.setItem('token', token);
+      /*
       const roleResponse = await getUserRole(token);
       const userRole = roleResponse.role;
       localStorage.setItem('role', userRole);
-
+      */
       console.log('Registration successful:', response);
-      console.log('User role:', userRole);
-      console.log(token);
+      console.log('User role:', role);
+      //console.log(token);
       // Redirigir según el rol
-      if (userRole === 'admin') {
-        window.location.href = '/admin-dashboard';
+      if (role === 'admin') {
+        window.location.href = '/auth/login';
       } else {
-        window.location.href = '/client-dashboard';
+        window.location.href = '/auth/login';
       }
     } catch (error) {
       console.error('Registration failed:', error.response || error.message || error);

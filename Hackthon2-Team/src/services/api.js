@@ -15,20 +15,20 @@ const setAuthToken = (token) => {
 };
 
 // Auth
-export const login = async (email, password) => {
-  const response = await api.post('/auth/login', { email, password });
+export const login = async (username, password) => {
+  const response = await api.post('/auth/login', { username, password });
   return response.data;
 };
 
-export const register = async (name, password, role) => {
-  const response = await api.post('/auth/register', { name, password, role });
+export const register = async (username, password, role) => {
+  const response = await api.post('/auth/register', { username, password, role });
   return response.data;
 };
 
 export const getUserRole = async (token) => {
   setAuthToken(token);
   try {
-    const response = await api.get('/auth/role');
+    const response = await api.get('/auth');
     return response.data;
   } catch (error) {
     console.error('Failed to fetch user role:', error);
