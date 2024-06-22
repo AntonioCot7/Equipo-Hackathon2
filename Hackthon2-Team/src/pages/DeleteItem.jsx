@@ -10,7 +10,7 @@ export const DeleteItem = () => {
         const token = localStorage.getItem('token');
 
         try {
-            await axios.delete(`https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/items/${itemId}`, {
+            await axios.delete(`https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/item/${itemId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },

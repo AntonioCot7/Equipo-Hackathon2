@@ -18,7 +18,7 @@ export const EditItems = () => {
         const fetchItem = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get(`https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/items/${id}`, {
+                const response = await axios.get(`https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/item/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },

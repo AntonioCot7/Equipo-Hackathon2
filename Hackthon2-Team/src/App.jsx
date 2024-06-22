@@ -9,6 +9,11 @@ import { CreateItems } from './pages/CreateItems';
 import { EditItems } from './pages/EditItems';
 import { ItemDetails } from './pages/ItemDetails';
 import { DeleteItem } from './pages/DeleteItem';
+import { AddItemToCart } from './pages/AddItemToCart';
+import { RemoveFromCart } from './pages/RemoveFromCart';
+import { BuyCart } from './pages/BuyCart';
+
+
 
 function App() {
   
@@ -21,6 +26,10 @@ function App() {
           <Route path="/CreateItems" element={<CreateItems/>} />
           <Route path="/ItemDetails" element={<ItemDetails/>} />
           <Route path="/DeleteItem" element={<DeleteItem/>} />
+          <Route path="/AddItemCart" element={<AddItemToCart/>} />
+          <Route path="/RemoveFromCart" element={<RemoveFromCart/>} />
+          <Route path="/BuyCart" element={<BuyCart/>} />
+
         </Routes>
       </Router>
     </>
