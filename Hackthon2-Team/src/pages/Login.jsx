@@ -6,16 +6,18 @@ const Login = () => {
   const handleLogin = async (username, password) => {
     try {
       const response = await login(username, password);
-      /*
+      
       const token = response.token;
       localStorage.setItem('token', token);
-
+      /*
       const roleResponse = await getUserRole(token);
       const role = roleResponse.role;
       localStorage.setItem('role', role);
         */
       console.log('Login successful:', response);
       console.log('User role:', response.role);
+      localStorage.setItem('role', response.role);
+    
       // Redirigir según el rol
       if (response.role === 'admin') {
         window.location.href = '/auth/login';

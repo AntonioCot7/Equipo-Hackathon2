@@ -23,10 +23,10 @@ function App() {
       <div className="min-h-screen bg-gray-100">
         <Routes>
           <Route path="/Items" element={<Items/>} />
-          <Route path="/EditItems" element={<EditItems/>} />
+          <Route path="/EditItems/:id" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
-          <Route path="/ItemDetails" element={<ItemDetails/>} />
-          <Route path="/DeleteItem" element={<DeleteItem/>} />
+          <Route path="/ItemDetails/:id" element={<ItemDetails/>} />
+          <Route path="/DeleteItem/:" element={<DeleteItem/>} />
           <Route path="/AddItemCart" element={<AddItemToCart/>} />
           <Route path="/RemoveFromCart" element={<RemoveFromCart/>} />
           <Route path="/BuyCart" element={<BuyCart/>} />

@@ -17,6 +17,7 @@ export const EditItems = () => {
     useEffect(() => {
         const fetchItem = async () => {
             const token = localStorage.getItem('token');
+            console.log(token)
             try {
                 const response = await axios.get(`https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/item/${id}`, {
                     headers: {
@@ -60,7 +61,7 @@ export const EditItems = () => {
                 },
             });
             alert('Item editado con éxito');
-            history.push('/admin'); // Redirige a la vista de admin después de editar el item
+            navigate('/Items'); // Redirige a la vista de admin después de editar el item
         } catch (error) {
             console.error('Error al editar el item:', error);
             alert('Hubo un error al editar el item');

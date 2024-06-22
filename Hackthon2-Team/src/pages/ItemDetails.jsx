@@ -1,39 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import {useNavigate, useParams } from 'react-router-dom';
 
-export const ItemDetails = ({ id, currentUser }) => {
+
+export const ItemDetails = () => {
+  const { id } = useParams();
+
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchItem = async () => {
+      const token = localStorage.getItem('token');
+      console.log(token);
       try {
-        const response = await fetch(`/item/${id}`, { 
+        const response = await axios.get(`https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/item/${id}`, { 
           headers: {
-            'Authorization': `Bearer ${currentUser.token}`,
+            'Authorization': `Bearer ${token}`,
           },
         });
 
-        if (!response.ok) {
-          throw new Error('Error al obtener el item');
-        }
-
-        const fetchedItem = await response.json();
-
-        if (!fetchedItem || fetchedItem.ansi !== id) { 
-          throw new Error('Item no encontrado');
-        }
-
-        setItem(fetchedItem);
+        const item = response.data;
+        setItem(item);
+  
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
     };
-
     fetchItem();
-  }, [id, currentUser]);
+  }, [id]);
 
   if (loading) {
     return <div>Cargando...</div>;
@@ -49,8 +47,12 @@ export const ItemDetails = ({ id, currentUser }) => {
 
   return (
     <div>
-      <h1>{item.name}</h1>
-      {/* Otros detalles del item aquí */}
+       <img src={item.imgUrl} alt={item.title} />
+        <h3>{item.title}</h3>
+        <p>Precio: ${item.price}</p>
+        <p>Puntuación: {item.stars}</p>
+        <p>BestSeller: {item.isBestSeller}</p>
+        <p>Se ha comprado el último mes: {item.boughtInLastMonth}</p>
     </div>
   );
 };
