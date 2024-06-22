@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 
 const RegisterForm = ({ onRegister }) => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('client'); // Default role is 'client'
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister(name, email, password, role);
+    onRegister(name, password, role);
   };
 
   return (
@@ -16,7 +15,7 @@ const RegisterForm = ({ onRegister }) => {
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="name">Name</label>
         <input
-          type="text"
+          type="string"
           id="name"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           value={name}
@@ -25,20 +24,9 @@ const RegisterForm = ({ onRegister }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="password">Password</label>
         <input
-          type="password"
+          type="string"
           id="password"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           value={password}
@@ -54,8 +42,8 @@ const RegisterForm = ({ onRegister }) => {
           value={role}
           onChange={(e) => setRole(e.target.value)}
         >
-          <option value="client">Client</option>
-          <option value="admin">Admin</option>
+          <option value="client">client</option>
+          <option value="admin">admin</option>
         </select>
       </div>
       <button

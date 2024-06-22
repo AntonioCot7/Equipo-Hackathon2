@@ -4,9 +4,9 @@ import RegisterForm from '../components/RegisterForm';
 import { register, getUserRole } from '../services/api';
 
 const Register = () => {
-  const handleRegister = async (name, email, password, role) => {
+  const handleRegister = async (name, password, role) => {
     try {
-      const response = await register(name, email, password, role);
+      const response = await register(name, password, role);
       const token = response.token;
       localStorage.setItem('token', token);
 
@@ -16,7 +16,7 @@ const Register = () => {
 
       console.log('Registration successful:', response);
       console.log('User role:', userRole);
-
+      console.log(token);
       // Redirigir según el rol
       if (userRole === 'admin') {
         window.location.href = '/admin-dashboard';
