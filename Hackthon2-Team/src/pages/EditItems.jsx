@@ -48,10 +48,10 @@ export const EditItems = () => {
         const updatedItem = {
             itemId: id,
             title,
-            price: parseFloat(price),
-            stars: parseInt(stars),
+            parseFloatprice,
+            stars,
             imgUrl,
-            boughtInLastMonth: parseInt(boughtInLastMonth),
+            boughtInLastMonth,
             isBestSeller,   
         };
 

@@ -26,7 +26,7 @@ function App() {
           <Route path="/EditItems/:id" element={<EditItems/>} />
           <Route path="/CreateItems" element={<CreateItems/>} />
           <Route path="/ItemDetails/:id" element={<ItemDetails/>} />
-          <Route path="/DeleteItem/:" element={<DeleteItem/>} />
+          <Route path="/DeleteItem/:id" element={<DeleteItem/>} />
           <Route path="/AddItemCart" element={<AddItemToCart/>} />
           <Route path="/RemoveFromCart" element={<RemoveFromCart/>} />
           <Route path="/BuyCart" element={<BuyCart/>} />
